@@ -13,7 +13,7 @@ class Submit extends Component {
 
         this.state = {
             touched: false,
-        }
+        };
     }
 
     handleClick(event) {
@@ -34,7 +34,7 @@ class Submit extends Component {
         const touched = !this.props.enabledUntilTouched || this.state.touched;
 
         const props = {
-            ... this.props,
+            ...this.props,
             disabled: touched && (form.isSubmitted() || !form.isValid()),
         };
 
@@ -52,12 +52,14 @@ Submit.contextTypes = {
     form: PropTypes.object.isRequired,
 };
 
-Submit.propTypes = {
-    enabledUntilTouched: PropTypes.bool,
-};
-
 Submit.defaultProps = {
     enabledUntilTouched: true,
+};
+
+Submit.propTypes = {
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired,
+    enabledUntilTouched: PropTypes.bool, // eslint-disable-line react/boolean-prop-naming
 };
 
 export default Submit;
